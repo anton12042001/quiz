@@ -1,11 +1,13 @@
 import HomePage from "../page/HomePage";
 import AuthPage from "../page/AuthPage";
 
-type ArrayRoute = Record<string, { path: string, element: JSX.Element}>
 
-type ArrayRoutes = Array<ArrayRoute>
+interface Routes {
+    path: string
+    element: JSX.Element
+}
 
-export const publicRoutes = [
+export const publicRoutes: Array<Routes> = [
     {path: '/home', element: <HomePage/>},
     {path: '/auth', element: <AuthPage/>},
 ]
