@@ -3,6 +3,7 @@ import {BrowserRouter} from 'react-router-dom'
 import {Provider,} from "react-redux";
 import {store} from './reduxToolkit'
 import AppRouter from "./components/AppRouter/AppRouter";
+import cl from './Index.module.css'
 
 const App = () => {
     return (

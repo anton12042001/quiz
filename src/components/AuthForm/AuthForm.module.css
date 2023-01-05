@@ -1,0 +1,23 @@
+.buttonNavigate{
+    border: none;
+    background: none;
+    color: #6161ff;
+    cursor: pointer;
+}
+.authFormLogin{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: mediumslateblue;
+}
+.authFormLoginForm{
+    border: 1px solid black;
+    width: 350px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: thistle;
+}

@@ -7,7 +7,14 @@ interface Routes {
     element: JSX.Element
 }
 
+export enum RoutePath {
+    home = "/home",
+    auth = "/auth"
+}
+
 export const publicRoutes: Array<Routes> = [
-    {path: '/home', element: <HomePage/>},
-    {path: '/auth', element: <AuthPage/>},
+    {path: RoutePath.auth, element: <AuthPage/>},
+]
+export const privateRoutes: Array<Routes> = [
+    {path: RoutePath.home, element: <HomePage/>},
 ]

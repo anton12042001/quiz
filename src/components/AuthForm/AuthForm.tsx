@@ -1,16 +1,18 @@
-import React from 'react';
-import { useForm } from "react-hook-form";
+import React, {useState} from 'react';
+import {FieldValue, useForm} from "react-hook-form";
 import cl from './AuthForm.module.css'
+import {signIn, signUp} from "../../api/authAPI";
+
+
+export interface DataProps {
+    email: string
+    password: string
+}
+
 
 const AuthForm = () => {
 
-
-    interface DataProps {
-        data: {
-            email:string
-            password:string
-        }
-    }
+    const [isRegistration, setIsRegistration] = useState(false)
 
 
     const {
@@ -19,20 +21,39 @@ const AuthForm = () => {
         reset
     } = useForm();
 
-    const onSubmit = ({data}: DataProps) => {
+    const onSubmit = (data: FieldValue<DataProps>) => {
+        if (isRegistration) {
+            signUp(data as DataProps)
+            return
+        }
+        signIn(data as DataProps)
         reset()
     }
 
     return (
-        <div >
-            <form className={cl.authFormLogin}  onSubmit={handleSubmit(onSubmit)}>
+        <div className={cl.authFormLogin}>
+            <form className={cl.authFormLoginForm} onSubmit={handleSubmit(data => {
+                onSubmit(data)
+            })}>
                 <div>
-                    <input className={cl.signInInputEmail}  placeholder={"Введите email"} {...register("email")} type="email"/>
+                    <input className={cl.signInInputEmail} placeholder={"Введите email"} {...register("email")}
+                           type="email"/>
                 </div>
                 <div>
-                    <input className={cl.signInInputPassword}  placeholder={"Введите пароль"} {...register("password")} type="password"/>
+                    <input className={cl.signInInputPassword} placeholder={"Введите пароль"} {...register("password")}
+                           type="password"/>
                 </div>
-                <button className={cl.buttonSignIp}  type={"submit"}>Войти</button>
+                <button className={cl.buttonSignIp} type={"submit"}>{!isRegistration ? <div>Войти</div> :
+                    <div>Зарегистрироваться</div>}</button>
+                <div>
+                    {!isRegistration ? <div>У вас еще нет аккаунта?</div> : <div>Уже есть аккаунт?</div>}
+                    <button type={"button"}
+                            className={cl.buttonNavigate}
+                            onClick={() => setIsRegistration((prev) => !prev)}
+                    >
+                        <div>{!isRegistration ? <div>Зарегистрируйтесь</div> : <div>Войти</div>}</div>
+                    </button>
+                </div>
             </form>
         </div>
     );

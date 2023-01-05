@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
+import AuthForm from "../components/AuthForm/AuthForm";
 
 const AuthPage = () => {
+
+
+
     return (
         <div>
-            Авторизация
+            <AuthForm/>
         </div>
     );
 };
