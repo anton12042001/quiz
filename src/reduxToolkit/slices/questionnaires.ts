@@ -12,6 +12,15 @@ const initialState: InitialState = {
     questionnaires: []
 }
 
+
+export const saveQuestionnaire = createAsyncThunk("questions/saveQuestionnaire", async (action, {rejectWithValue, dispatch}) => {
+
+})
+
+
+
+
+
 const questionnairesSlice = createSlice({
     name: 'questions',
     initialState,
@@ -20,8 +29,7 @@ const questionnairesSlice = createSlice({
             state.questionnaires = action.payload
         }
     },
-    extraReducers: (builder => {
-    })
+
 })
 export const {setQuestionnaires} = questionnairesSlice.actions
 

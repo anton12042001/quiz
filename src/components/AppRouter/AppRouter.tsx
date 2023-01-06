@@ -7,6 +7,7 @@ import {auth} from "../../firebase";
 const AppRouter = () => {
     const [userData, userLoading] = useAuthState(auth)
 
+
     if(userLoading){
         return <h1>Загрузка</h1>
     }
