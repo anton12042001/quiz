@@ -1,6 +1,6 @@
 import HomePage from "../page/HomePage";
 import AuthPage from "../page/AuthPage";
-import CreateNewQuiz from "../page/CreateNewQuiz";
+
 
 
 interface Routes {
@@ -11,7 +11,6 @@ interface Routes {
 export enum RoutePath {
     home = "/home",
     auth = "/auth",
-    createNewQuiz = '/createNewQuiz'
 }
 
 export const publicRoutes: Array<Routes> = [
@@ -19,5 +18,4 @@ export const publicRoutes: Array<Routes> = [
 ]
 export const privateRoutes: Array<Routes> = [
     {path: RoutePath.home, element: <HomePage/>},
-    {path: RoutePath.createNewQuiz, element: <CreateNewQuiz/>},
 ]

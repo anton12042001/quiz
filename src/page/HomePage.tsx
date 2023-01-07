@@ -1,10 +1,19 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {logOut} from "../api/authAPI";
 import {useNavigate} from "react-router-dom";
+import {getCurrentQuizQuestions} from "../reduxToolkit/slices/currentQuiz";
+import {useAppDispatch} from "../hooc";
+
 
 
 const HomePage = () => {
     const navigate = useNavigate()
+    const dispatch = useAppDispatch()
+
+
+    useEffect(() => {
+        dispatch(getCurrentQuizQuestions())
+    },[])
 
 
 
@@ -12,7 +21,7 @@ const HomePage = () => {
         <div>
             Домашняя страница
             <button onClick={logOut} >Выйти</button>
-            <button onClick={() => navigate('/createNewQuiz')} >Создать опросник</button>
+
         </div>
     );
 };
