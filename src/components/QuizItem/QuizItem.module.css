@@ -1,0 +1,25 @@
+.itemQuiz {
+    max-width: 250px;
+    width: 100%;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.quizItemContainer{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+}
+.itemQuizButton{
+    width: 100%;
+    height: 100%;
+    background: #9ca2a6;
+    border: none;
+    border-radius: 15px;
+    transition: all 0.3s ease 0s;
+}
+.itemQuizButton:hover{
+    transition: all 0.3s ease 0s;
+    background: #7d7e83;
+}

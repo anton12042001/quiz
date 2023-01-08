@@ -1,9 +1,17 @@
 import React from 'react';
+import cl from './QuizItem.module.css'
 
-const QuizItem = () => {
+interface ItemQuizProps {
+    itemQuiz: string
+}
+
+
+const QuizItem = ({itemQuiz}: ItemQuizProps) => {
     return (
-        <div>
-            
+        <div className={cl.itemQuiz}>
+            <button className={cl.itemQuizButton} >
+                {itemQuiz}
+            </button>
         </div>
     );
 };
