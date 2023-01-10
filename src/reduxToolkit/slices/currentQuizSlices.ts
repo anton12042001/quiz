@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice,} from "@reduxjs/toolkit";
 import axios from "axios";
+import {DataProps} from "../../components/AuthForm/AuthForm";
 
 type currentQuizType = Array<{ id: string }>
 
@@ -7,7 +8,6 @@ type currentQuizType = Array<{ id: string }>
 interface InitialState {
     currentQuiz: currentQuizType
 }
-
 interface Answers{
     answer_a: null | string
     answer_b: null | string
@@ -47,10 +47,11 @@ const initialState: InitialState = {
     currentQuiz: []
 }
 
-export const getCurrentQuizQuestionsCategory = createAsyncThunk("currentQuiz/getCurrentQuizQuestions", async (_, {
+export const getCurrentQuizQuestionsCategory = createAsyncThunk("currentQuiz/getCurrentQuizQuestions", async (action:string, {
     rejectWithValue,
     dispatch
 }) => {
+    console.log(action)
     axios.get<Quiz[]>('https://quizapi.io/api/v1/questions?apiKey=Vsd1LmDu2RxKVq6njL4cJwBzdG3KD5Nkf7mARdPH')
         .then((response) => {
             console.log(response)

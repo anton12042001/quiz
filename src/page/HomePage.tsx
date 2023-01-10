@@ -8,16 +8,7 @@ import cl from './../components/QuizItem/QuizItem.module.css'
 
 
 const HomePage = () => {
-    const navigate = useNavigate()
     const [allQuiz,setAllQuiz] = useState(["Linux","DevOps","Networking","Programming ","Cloud","Docker","Kubernetes"])
-    const dispatch = useAppDispatch()
-
-
-    useEffect(() => {
-        dispatch(getCurrentQuizQuestionsCategory())
-    },[])
-
-
 
     return (
         <div>
