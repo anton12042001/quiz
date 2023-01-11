@@ -47,17 +47,33 @@ const initialState: InitialState = {
     currentQuiz: []
 }
 
-export const getCurrentQuizQuestionsCategory = createAsyncThunk("currentQuiz/getCurrentQuizQuestions", async (action:string, {
+export const getQuizQuestionsCategory = createAsyncThunk("currentQuiz/getQuizQuestionsCategory", async (action:string, {
     rejectWithValue,
     dispatch
 }) => {
-    console.log(action)
-    axios.get<Quiz[]>('https://quizapi.io/api/v1/questions?apiKey=Vsd1LmDu2RxKVq6njL4cJwBzdG3KD5Nkf7mARdPH')
+    axios.get<Quiz[]>(`https://quizapi.io/api/v1/questions?apiKey=Vsd1LmDu2RxKVq6njL4cJwBzdG3KD5Nkf7mARdPH&category=${action}`)
         .then((response) => {
-            console.log(response)
             dispatch(setCurrentQuiz(response.data))
         });
 })
+
+
+export const getQuizQuestionsTags = createAsyncThunk("currentQuiz/getQuizQuestionsTags", async (action:string, {
+    rejectWithValue,
+    dispatch
+}) => {
+    axios.get<Quiz[]>(`https://quizapi.io/api/v1/questions?apiKey=Vsd1LmDu2RxKVq6njL4cJwBzdG3KD5Nkf7mARdPH&category=${action}`)
+        .then((response) => {
+            dispatch(setCurrentQuiz(response.data))
+        });
+})
+
+
+
+
+
+
+
 
 
 const questionnairesSlice = createSlice({

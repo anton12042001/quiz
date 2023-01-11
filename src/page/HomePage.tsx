@@ -1,18 +1,16 @@
-import React, {useEffect, useState} from 'react';
-import {logOut} from "../api/authAPI";
-import {useNavigate} from "react-router-dom";
-import {getCurrentQuizQuestionsCategory} from "../reduxToolkit/slices/currentQuizSlices";
-import {useAppDispatch} from "../hooc";
+import React, {useState} from 'react';
 import QuizItem from "../components/QuizItem/QuizItem";
 import cl from './../components/QuizItem/QuizItem.module.css'
+import GetKeywordQuestionsForm from "../components/GetKeywordQuestionsForm/GetKeywordQuestionsForm";
 
 
 const HomePage = () => {
-    const [allQuiz,setAllQuiz] = useState(["Linux","DevOps","Networking","Programming ","Cloud","Docker","Kubernetes"])
+    const [allQuiz, setAllQuiz] = useState(["Linux", "DevOps", "Docker",])
 
     return (
-        <div>
-            <div className={cl.quizItemContainer} >{allQuiz.map(i => <QuizItem itemQuiz={i} />)}</div>
+        <div className={cl.homePageContainer}>
+            <div className={cl.quizItemContainer}>{allQuiz.map(i => <QuizItem itemQuiz={i}/>)}</div>
+            <GetKeywordQuestionsForm/>
         </div>
     );
 };

@@ -23,3 +23,7 @@
     transition: all 0.3s ease 0s;
     background: #7d7e83;
 }
+.homePageContainer{
+    max-width: 1440px;
+    margin: 0 auto;
+}

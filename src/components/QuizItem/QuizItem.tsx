@@ -1,6 +1,6 @@
 import React from 'react';
 import cl from './QuizItem.module.css'
-import {getCurrentQuizQuestionsCategory} from "../../reduxToolkit/slices/currentQuizSlices";
+import {getQuizQuestionsCategory} from "../../reduxToolkit/slices/currentQuizSlices";
 import {useAppDispatch} from "../../hooc";
 
 interface ItemQuizProps {
@@ -13,7 +13,7 @@ const QuizItem = (itemQuiz: ItemQuizProps) => {
     const dispatch = useAppDispatch()
 
     const getQuiz = (itemQuiz:ItemQuizProps) => {
-        dispatch(getCurrentQuizQuestionsCategory(itemQuiz))
+        dispatch(getQuizQuestionsCategory(itemQuiz.itemQuiz))
     }
 
 
