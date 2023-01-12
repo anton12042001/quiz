@@ -33,7 +33,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Introduction-to-typescript-user+redux" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -58,7 +58,11 @@
       <workItem from="1673138579149" duration="9796000" />
       <workItem from="1673319323236" duration="6136000" />
       <workItem from="1673346251352" duration="275000" />
-      <workItem from="1673422387436" duration="4978000" />
+      <workItem from="1673422387436" duration="5142000" />
+      <workItem from="1673446807655" duration="25000" />
+      <workItem from="1673484823327" duration="3575000" />
+      <workItem from="1673495640674" duration="1775000" />
+      <workItem from="1673505198151" duration="4053000" />
     </task>
     <servers />
   </component>

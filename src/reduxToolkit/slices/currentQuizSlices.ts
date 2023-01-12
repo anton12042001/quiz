@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice,} from "@reduxjs/toolkit";
 import axios from "axios";
-import {DataProps} from "../../components/AuthForm/AuthForm";
+
 
 type currentQuizType = Array<{ id: string }>
 
@@ -51,6 +51,7 @@ export const getQuizQuestionsCategory = createAsyncThunk("currentQuiz/getQuizQue
     rejectWithValue,
     dispatch
 }) => {
+    dispatch(removeCurrentQuiz())
     axios.get<Quiz[]>(`https://quizapi.io/api/v1/questions?apiKey=Vsd1LmDu2RxKVq6njL4cJwBzdG3KD5Nkf7mARdPH&category=${action}`)
         .then((response) => {
             dispatch(setCurrentQuiz(response.data))
@@ -62,9 +63,11 @@ export const getQuizQuestionsTags = createAsyncThunk("currentQuiz/getQuizQuestio
     rejectWithValue,
     dispatch
 }) => {
-    axios.get<Quiz[]>(`https://quizapi.io/api/v1/questions?apiKey=Vsd1LmDu2RxKVq6njL4cJwBzdG3KD5Nkf7mARdPH&category=${action}`)
+    dispatch(removeCurrentQuiz())
+    axios.get<Quiz[]>(`https://quizapi.io/api/v1/questions?apiKey=Vsd1LmDu2RxKVq6njL4cJwBzdG3KD5Nkf7mARdPH&tags=${action}`)
         .then((response) => {
             dispatch(setCurrentQuiz(response.data))
+
         });
 })
 
@@ -82,10 +85,13 @@ const questionnairesSlice = createSlice({
     reducers: {
         setCurrentQuiz(state,action) {
             state.currentQuiz = action.payload
+        },
+        removeCurrentQuiz(state){
+            state.currentQuiz = []
         }
     },
 
 })
-export const {setCurrentQuiz} = questionnairesSlice.actions
+export const {setCurrentQuiz,removeCurrentQuiz} = questionnairesSlice.actions
 
 export default questionnairesSlice.reducer

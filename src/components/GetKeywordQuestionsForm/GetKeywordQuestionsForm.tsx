@@ -1,37 +1,34 @@
 import React from 'react';
 import cl from "../QuizItem/QuizItem.module.css";
-import {useForm, FieldValue} from "react-hook-form";
+import {SubmitHandler, useForm} from "react-hook-form";
 import {getQuizQuestionsTags} from "../../reduxToolkit/slices/currentQuizSlices";
-import {useAppDispatch} from "../../hooc";
+import {useAppDispatch, useAppSelector} from "../../hooc";
+import {useNavigate} from "react-router-dom"
 
-
-interface DataForm {
+type DataForm = {
     keyword: string
 }
 
 const GetKeywordQuestionsForm = () => {
     const dispatch = useAppDispatch()
+    const navigate = useNavigate()
 
     const {
         register,
         handleSubmit,
         reset
-    } = useForm();
+    } = useForm<DataForm>();
 
-    const onSubmit = (data: FieldValue<DataForm>) => {
-        alert(JSON.stringify(data))
-        if(typeof data === "string"){
-            dispatch(getQuizQuestionsTags(data))
-        }
-        reset()
+
+    const onSubmit:SubmitHandler<DataForm> = (data) => {
+        dispatch(getQuizQuestionsTags(data.keyword))
+            .then(() => navigate('/currentQuiz'))
     }
 
 
     return (
 
-        <form className={cl.formQuestions} onSubmit={handleSubmit(data => {
-            onSubmit(data)
-        })}>
+        <form className={cl.formQuestions} onSubmit={handleSubmit(onSubmit)}>
             <div>Введите ключевое слово для поиска</div>
             <div>
                 <input placeholder={"Введите ключевое слово"} {...register("keyword")}
